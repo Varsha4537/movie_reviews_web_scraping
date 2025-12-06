@@ -1,146 +1,153 @@
 # 🎬 Movie Reviews Web Scraping & Neurodivergence Analysis
 
-This repository contains code and workflows for scraping, filtering, and analyzing user reviews and online discussions of movies and TV shows that portray neurodivergence.  
-Data is collected from **news articles, Reddit, Twitter, and YouTube comments**, and then cleaned and merged for downstream analysis (e.g., sentiment, topic modeling, representation studies).
+This repository contains code and workflows for **scraping, filtering, and analyzing user reviews** and online discussions of movies and TV shows that portray **neurodivergence**.
+
+Data is collected from **news articles, Reddit, Twitter/X, and YouTube comments**, cleaned and merged for downstream analysis — including **sentiment**, **topic modeling**, and **representation studies**.
 
 ---
 
-## 📁 Repository Structure
+## 📂 Repository Structure
 
-
-
-movie_reviews_web_scraping/
-├── Guardian_API_extraction.ipynb # Scrape articles from The Guardian API
-├── NY_API_Extraction.ipynb # NYTimes or other news source scraping
-├── Reddit_API.ipynb # Reddit submissions & comment scraper (Async PRAW)
-├── Twitter_API.ipynb # Twitter/X scraper using free API tier
-├── YT_Reviews.ipynb # YouTube comment downloader for selected videos
-├── data_preprocessing_code.ipynb # Text cleaning and normalization
-├── final_code.ipynb # Merges datasets + neurodivergence filtering
-└── lda_topic_modeling_all.html # Topic modeling visualization output
+- **movie_reviews_web_scraping/**
+  - **Guardian_API_extraction.ipynb** – Scrape articles from The Guardian API  
+  - **NY_API_Extraction.ipynb** – NYTimes or other news source scraping  
+  - **Reddit_API.ipynb** – Reddit submissions & comment scraper (Async PRAW)  
+  - **Twitter_API.ipynb** – Twitter/X scraper using free API tier  
+  - **YT_Reviews.ipynb** – YouTube comment downloader for selected videos  
+  - **data_preprocessing_code.ipynb** – Text cleaning and normalization  
+  - **final_code.ipynb** – Merges datasets + neurodivergence filtering  
+  - **lda_topic_modeling_all.html** – Topic modeling visualization output  
 
 
 ---
 
 ## 🎯 Project Objective
 
-The goal of this project is to build a unified dataset covering:
+The goal of this project is to build a unified dataset that consolidates:
 
 - Public reviews  
 - Viewer comments  
 - Media coverage  
 - Social conversations  
 
-…about movies and TV shows that depict **autism, ADHD, dyslexia, Tourette syndrome, and other forms of neurodivergence**.
+...about movies and TV shows depicting **autism, ADHD, dyslexia, Tourette syndrome, and other forms of neurodivergence**.
 
-This enables:
+This enables researchers and analysts to perform:
 
 - Representation analysis  
-- Sentiment tracking  
+- Sentiment trend tracking  
 - Topic modeling  
-- Cross-platform comparison of user perceptions  
+- Cross-platform perception studies  
 
 ---
 
 ## 🛠️ Features
 
-- ✔ Scrapes media coverage using **The Guardian API**
-- ✔ Collects **Reddit posts & comments** using asynchronous API calls  
-- ✔ Extracts **Twitter/X posts** using Tweepy and the free API tier  
-- ✔ Downloads **YouTube comments** from selected videos  
+- ✔ Scrapes **media coverage** using The Guardian API  
+- ✔ Collects **Reddit posts & comments** (asynchronous PRAW)  
+- ✔ Extracts **Twitter/X posts** with Tweepy (free API tier)  
+- ✔ Downloads **YouTube comments** for selected videos  
 - ✔ Filters all content using customizable **neurodivergence keyword lists**  
-- ✔ Merges all platforms into a single dataset per movie  
-- ✔ Supports advanced NLP analysis (sentiment, LDA topic modeling)
+- ✔ Merges all platforms into one consolidated dataset per movie  
+- ✔ Supports advanced NLP analysis (Sentiment, Keyword, LDA Topic Modeling)
+
+---
+## Dependencies
+pandas
+requests
+tweepy
+praw
+asyncpraw
+youtube_comment_downloader
+beautifulsoup4
+nltk
+gensim
+scikit-learn
+
 
 ---
 
-If a requirements file is not provided, install dependencies manually based on notebooks:
+## 🔑 API Keys Setup
 
-pandas
+You will need API keys for:
 
-requests
+- The Guardian API  
+- Reddit API  
+- Twitter/X API  
+- YouTube API (optional)
 
-tweepy
+Store keys securely in **environment variables** or a local `.env` file.  
+🚫 **Do NOT commit** these keys to the repository.
 
-praw / asyncpraw
+Example `.env`:
 
-youtube_comment_downloader
+GUARDIAN_API_KEY=your_guardian_key
+REDDIT_CLIENT_ID=your_reddit_client_id
+REDDIT_CLIENT_SECRET=your_reddit_secret
+TWITTER_BEARER_TOKEN=your_twitter_token
+YOUTUBE_API_KEY=your_youtube_key
 
-beautifulsoup4 (if additional scraping)
+---
 
-nltk, gensim, sklearn (optional NLP tasks)
+## 📑 Workflow
 
-3️⃣ Insert API Keys
+### 1️⃣ Scrape Data
+- Run `Guardian_API_extraction.ipynb` → Media articles  
+- Run `Reddit_API.ipynb` → Reddit discussions  
+- Run `Twitter_API.ipynb` → Tweets  
+- Run `YT_Reviews.ipynb` → YouTube comments  
 
-You will need keys for:
+### 2️⃣ Preprocess Data
+Use `data_preprocessing_code.ipynb` to:
+- Clean and normalize text  
+- Deduplicate entries  
+- Unify review formats  
 
-The Guardian API
+### 3️⃣ Merge & Filter
+Use `final_code.ipynb` to:
+- Merge all platform datasets  
+- Apply neurodivergence keyword filters  
+- Export consolidated CSV/Excel outputs  
 
-Reddit API
+### 4️⃣ Analyze (Optional)
+Perform:
+- Sentiment analysis  
+- Keyword frequency analysis  
+- Topic modeling (example output: `lda_topic_modeling_all.html`)
 
-Twitter/X API
+---
 
-YouTube (optional)
+## 🔧 Customization
 
-Store keys in environment variables or local config files (DO NOT commit them).
+### Change Movie List
+Edit the list/dictionary of movie titles inside each scraping notebook.
 
-📑 Workflow
-1. Scrape Data
+### Modify Neurodivergence Keywords
+Update the keyword list (e.g., *autism, ADHD, dyslexia, stimming, sensory issues, neurodivergent, neurodiversity*, etc.) inside preprocessing or scraping scripts.
 
-Run Guardian_API_extraction.ipynb for media articles
+---
 
-Run Reddit_API.ipynb for Reddit discussions
+## ⚠️ Ethical & Legal Notes
 
-Run Twitter_API.ipynb for tweets
+- Respect **API rate limits** and **Terms of Service** for each platform.  
+- **Do not distribute raw scraped data** containing user-identifiable content.  
+- Use datasets and analyses **for academic or research purposes only**.  
 
-Run YT_Reviews.ipynb for YouTube comments
+---
 
-2. Preprocess Data
+## 📊 Example Outputs
 
-Use data_preprocessing_code.ipynb to:
+| Analysis | Description |
+|-----------|-------------|
+| Sentiment Analysis | Detect positive/negative tone in public perceptions. |
+| Topic Modeling | Identify thematic clusters related to neurodivergent representation. |
+| Keyword Frequency | Explore commonly used descriptors and sentiments. |
 
-Clean all text
+---
 
-Deduplicate
+## 🧠 Research Applications
 
-Normalize review formats
+This repository supports **digital media sociology**, **AI/NLP-based representation studies**, and **neurodivergent discourse analysis** across diverse media platforms.
 
-3. Merge & Filter
+---
 
-Use final_code.ipynb to:
-
-Merge all platform datasets
-
-Apply neurodivergence keyword filters
-
-Export consolidated CSV/Excel outputs
-
-4. Analyze (Optional)
-
-Sentiment analysis
-
-Keyword frequency analysis
-
-LDA topic modeling (example output in lda_topic_modeling_all.html)
-
-🔑 Customization
-Change Movie List
-
-Edit the list/dictionary inside each scraping notebook.
-
-Change Neurodivergence Keywords
-
-Modify the list (e.g., autism, ADHD, dyslexia, stimming, sensory issues, neurodivergent, etc.) in preprocessing or scraping files.
-
-⚠️ Ethical & Legal Notes
-
-Respect the rate limits and Terms of Service of each API.
-
-Do not distribute raw scraped user data without proper anonymization.
-
-Use this repository for academic or research purposes only.
-
-📜 License
-
-This project is intended for research and educational use.
-Feel free to fork, modify, or build upon it — with attribution.
